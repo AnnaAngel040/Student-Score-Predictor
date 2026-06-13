@@ -2,11 +2,19 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import pickle
 from flask_cors import CORS
+import os
+import pickle
+
+model_path = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "student_model.pkl"
+)
 
 app = Flask(__name__)
 CORS(app)
 
-with open("student_model.pkl", "rb") as file:
+with open(model_path, "rb") as file:
     model = pickle.load(file)
 
 @app.route("/test")
@@ -37,4 +45,5 @@ def predict():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
