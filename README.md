@@ -2,7 +2,7 @@
 
 An end-to-end Machine Learning web dashboard application that predicts a student's final academic score based on their weekly study habits, attendance record, and demographic factors. 
 
-**Status:** 🎉 Fully operational, end-to-end ML application working.
+https://student-score-predictor-2026.web.app/
 
 ---
 
