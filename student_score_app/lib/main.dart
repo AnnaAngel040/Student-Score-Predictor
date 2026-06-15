@@ -54,7 +54,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
 
     try {
-      final url = Uri.parse("http://127.0.0.1:5000/predict");
+      final url = Uri.parse("https://student-score-predictor-oo0j.onrender.com/predict");
+
 
       final response = await http.post(
         url,
@@ -69,6 +70,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           "region": region,
         }),
       );
+      
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
