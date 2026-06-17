@@ -38,11 +38,14 @@ def predict():
         "Region_Urban": [1 if data["region"] == "Urban" else 0]
     })
 
-    prediction = model.predict(student)
+    prediction = model.predict(student)[0]
+
+    # Restrict prediction to the valid range (0–100)
+    prediction = max(0, min(100, prediction))
 
     return jsonify({
-        "predicted_score": round(float(prediction[0]), 2)
-    })
+    "predicted_score": round(prediction, 2)
+})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

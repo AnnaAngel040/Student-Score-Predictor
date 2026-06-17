@@ -23,6 +23,9 @@ student = pd.DataFrame({
     "Region_Urban": [region_urban]
 })
 
-prediction = model.predict(student)
+prediction = model.predict(student)[0]
 
-print(f"\nPredicted Score: {prediction[0]:.2f}")
+# Keep the score between 0 and 100
+prediction = max(0, min(100, prediction))
+
+print(f"\nPredicted Score: {prediction:.2f}")
